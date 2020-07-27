@@ -1,0 +1,66 @@
+$default-key-bg-color: #3a424e;
+$special-key-bg-color: black;
+$key-highlight-bg-color: #5571ee;
+$default-key-text-color: white;
+$special-key-text-color: #80806b;
+$key-highlight-text-color: $special-key-text-color;
+
+@mixin setKeyColors($background, $text) {
+  background-color: $background;
+  color: $text;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+body {
+  background-color: gray;
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+}
+
+.keyboard-row {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0.5rem 0;
+  justify-content: space-between;
+}
+
+.key {
+  display: inline-block;
+  padding: 1rem;
+  margin: 0 0.25rem;
+  border-width: 0;
+  border-radius: 0.25rem;
+  flex-grow: 1;
+  font-weight: bold;
+  @include setKeyColors($default-key-bg-color, $default-key-text-color);
+}
+
+.space {
+  flex-grow: 10;
+}
+
+.wide-key {
+  flex: 2 1 100px;
+}
+
+.narrow-key {
+  flex: 1 1 50px;
+}
+
+.special-key {
+  @include setKeyColors($special-key-bg-color, $special-key-text-color);
+}
+
+.pressed {
+  @include setKeyColors($key-highlight-bg-color, $key-highlight-text-color);
+}
